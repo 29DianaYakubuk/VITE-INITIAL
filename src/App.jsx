@@ -4,8 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  // Императивный код для управления состоянием счетчика
   const [count, setCount] = useState(0)
 
+  // Декларативный стиль для рендеринга компонентов
   return (
     <>
       <div>
@@ -17,17 +19,19 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
+      <div className="card"></div>
+        {/* Императивный стиль для управления состоянием счетчика */}
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
-      </div>
+      {/* Декларативный стиль для рендеринга компонентов */}
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <p>Current Year: {new Date().getFullYear()}</p>
     </>
   )
 }
