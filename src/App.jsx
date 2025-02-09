@@ -1,39 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, createElement } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
 function App() {
-  // Императивный код для управления состоянием счетчика
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  // Декларативный стиль для рендеринга компонентов
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card"></div>
-        {/* Императивный стиль для управления состоянием счетчика */}
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      {/* Декларативный стиль для рендеринга компонентов */}
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <p>Current Year: {new Date().getFullYear()}</p>
-    </>
-  )
+  return createElement(
+    'div',
+    null,
+    createElement(
+      'div',
+      null,
+      createElement(
+        'a',
+        { href: 'https://vite.dev', target: '_blank' },
+        createElement('img', { src: viteLogo, className: 'logo', alt: 'Vite logo' })
+      ),
+      createElement(
+        'a',
+        { href: 'https://react.dev', target: '_blank' },
+        createElement('img', { src: reactLogo, className: 'logo react', alt: 'React logo' })
+      )
+    ),
+    createElement('h1', null, 'Vite + React'),
+    createElement('div', { className: 'card' }),
+    createElement(
+      'button',
+      { onClick: () => setCount(count + 1) },
+      `count is ${count}`
+    ),
+    createElement(
+      'p',
+      null,
+      'Edit ',
+      createElement('code', null, 'src/App.jsx'),
+      ' and save to test HMR'
+    ),
+    createElement(
+      'p',
+      { className: 'read-the-docs' },
+      'Click on the Vite and React logos to learn more'
+    ),
+    createElement('p', null, `Current Year: ${new Date().getFullYear()}`)
+  );
 }
 
-export default App
+export default App;
